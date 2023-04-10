@@ -7,7 +7,8 @@ WORKDIR /src
 
 # Install dependencies from packages.json
 COPY . .
-#COPY package-lock.json ./
+COPY package.json ./
+COPY moudules ./
 #COPY kendo-ui-license.txt ./
 
 # Install all node packages
