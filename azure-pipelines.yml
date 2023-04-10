@@ -15,13 +15,11 @@ stages:
 
       - checkout: self
 
-      - template: DockerBuild.yml
-        parameters:
-          ProjectName: 'angular-app'
-          ConnectionTypeName: 'foodalert-prakash'
-          RegistryServiceConnection: 'Acr-connection'
-          WebAppName: 'appservicefoodalerttest0000'
-          repository: 'udayangular'
-          containerRegistry: udaycontainer.azurecr.io
-          tag: 'Build-$(Build.BuildNumber)'
-          token: 'false'
+      - task: NodeTool@0
+        inputs:
+          versionSource: 'spec'
+          versionSpec: '6.x'
+      - script: |
+          npm install -g @angular/cli@^9
+          npm install
+          ng build --prod
