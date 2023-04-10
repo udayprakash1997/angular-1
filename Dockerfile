@@ -6,7 +6,7 @@ LABEL image.title="Unity User Management" \
 WORKDIR /src
 
 # Install dependencies from packages.json
-COPY package.json ./
+COPY . .
 #COPY package-lock.json ./
 #COPY kendo-ui-license.txt ./
 
