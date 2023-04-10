@@ -8,13 +8,12 @@ WORKDIR /src
 # Install dependencies from packages.json
 COPY . .
 COPY package.json ./
-COPY moudules ./
 #COPY kendo-ui-license.txt ./
 
 # Install all node packages
 COPY /aio/.npmrc .
 RUN npm install -g pnpm
-#RUN pnpm install --force
+RUN pnpm install --force
 #RUN npx kendo-ui-license activate
 
 # Copy everything over to Docker environment
