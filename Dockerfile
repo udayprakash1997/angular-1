@@ -1,7 +1,7 @@
-FROM node:latest as build
-WORKDIR /usr/local/app
-COPY ./  /usr/local/app
-RUN npm install --force
+FROM node:8.15.1-alpine as build
+WORKDIR /app
+COPY . .
+RUN npm --verbose install
 RUN npm run build
 
 FROM nginx:latest
