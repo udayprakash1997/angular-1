@@ -16,13 +16,13 @@ WORKDIR /src
 # Install dependencies from packages.json
 COPY package.json ./
 # COPY package-lock.json ./
-COPY kendo-ui-license.txt ./
+##COPY kendo-ui-license.txt ./
 
 # Install all node packages
 COPY /prod/.npmrc .
 RUN npm install -g pnpm
 RUN pnpm install --force
-RUN npx kendo-ui-license activate
+##RUN npx kendo-ui-license activate
 
 # Copy everything over to Docker environment
 COPY . ./
