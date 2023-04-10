@@ -15,6 +15,7 @@ WORKDIR /src
 
 # Install dependencies from packages.json
 COPY package.json ./
+COPY renovate.json ./
 # COPY package-lock.json ./
 ##COPY kendo-ui-license.txt ./
 
