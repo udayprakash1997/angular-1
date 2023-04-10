@@ -5,5 +5,5 @@ RUN npm install
 RUN npm run build
 
 FROM nginx:latest
-COPY--from=build /usr/local/dist/demo-app /usr/share/nginx/html
+COPY--from=build /usr/local/dist/addOneButton /usr/share/nginx/html
 EXPOSE 80
