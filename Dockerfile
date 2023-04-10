@@ -22,7 +22,6 @@ COPY package.json ./
 ##COPY /prod/.npmrc .
 RUN npm install -g npm@9.6.4
 RUN npm install -g pnpm
-RUN pnpm install --force
 ##RUN npx kendo-ui-license activate
 
 # Copy everything over to Docker environment
