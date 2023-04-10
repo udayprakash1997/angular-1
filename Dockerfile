@@ -21,6 +21,7 @@ COPY package.json ./
 # Install all node packages
 ##COPY /prod/.npmrc .
 RUN npm install -g npm@9.6.4
+RUN npm install -g pnpm
 RUN pnpm install --force
 ##RUN npx kendo-ui-license activate
 
