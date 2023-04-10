@@ -1,25 +1,27 @@
-FROM node:16.16.0-alpine as builder
+# Set the base image to use
+FROM node:14-alpine
 
-LABEL image.title="Unity User Management" \
-    image.description="Docker image for unity user management app"
+# Create and set the working directory
+WORKDIR /app
 
-WORKDIR /src
+# Copy the package.json and package-lock.json files
+COPY package*.json ./
 
-# Install dependencies from packages.json
+# Install the dependencies
+RUN npm install
+
+# Copy the rest of the application code
 COPY . .
-COPY package.json ./
-#COPY kendo-ui-license.txt ./
 
-# Install all node packages
-COPY /aio/.npmrc .
-RUN npm install -g pnpm
-RUN npm install --force
-#RUN npx kendo-ui-license activate
+# Build the application
+RUN npm run build --prod
 
-# Copy everything over to Docker environment
-COPY . ./
+# Set the environment variables
+ENV PORT=80
+ENV HOST=0.0.0.0
 
-# The test command will force Jest to run in CI-mode, and tests will only run once instead of launching the watcher
-#ENV CI=true
+# Expose the port that the application will run on
+EXPOSE 80
 
-RUN pnpm build
+# Start the application
+CMD [ "npm", "run", "start" ]
